@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="image/logo.jpg" type="image/png">
+    <title>BaRVer Barbershop</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: black;
+        }
+
+        /* HEADER 1 MENU */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #003C32;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .logo {
+            width: 50px;
+            height: auto;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .Barbershop {
+            color: white;
+            font-size: 24px;
+            font-weight: bolder;
+            font-style: italic;
+            display: flex;
+            margin-bottom: 10px;
+            margin-right: 800px;
+            text-shadow: 0 0 10px #ff5733, 0 0 20px #ff5733, 0 0 30px #ff5733, 0 0 40px #ff5733;
+            text-transform: uppercase;
+        }
+
+        .fixed-header a {
+            color: white;
+            text-decoration: none;
+            margin-right: 0px;
+            font-size: 16px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .fixed-header a:hover {
+            color: #003C32;
+        }
+
+        .link {
+            text-align: center;
+            margin-right: auto;
+            gap: 1;
+        }
+
+        @keyframes slideInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+  
+        .about-section {
+            position: relative;
+            width: 100%;
+            height: 75vh;
+            overflow: hidden;
+        }
+
+        .service-item {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+
+        #background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; 
+        }
+
+    
+        .text-container {
+            position: absolute;
+            font-weight: bolder;
+            font-style: italic;
+            top: 40%;
+            left: 30%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+            padding: 0 5%;
+            max-width: 800px;
+        }
+
+        .text-container h2 {
+            color: white;
+            font-size: 5rem;
+            font-weight: bold;
+            font-style: italic;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px #ff5733, 0 0 20px #ff5733, 0 0 30px #ff5733, 0 0 40px #ff5733;
+        }
+
+        .text-container p {
+            font-size: 1.5rem;
+            font-style: italic;
+            text-shadow: 0 0 5px #33c4ff, 0 0 10px #33c4ff, 0 0 20px #33c4ff;
+        }
+
+        /* 2 MENU */
+        .dropdown-container {
+            justify-content: space-around;
+            background-color: #003C32;
+            text-align: center;
+            margin-top: 0px;
+            display: flex; 
+            gap: 0px; 
+        }
+
+        .dropdown-option {
+            color: white;
+            font-size: 20px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .dropdown-option:hover {
+            color: #003C32;
+        }
+
+        .dropdown-option::after {
+            content: '▼'; 
+            font-size: 1.2rem;
+            margin-left: 10px; 
+            transition: transform 0.3s ease;
+        }
+
+        
+        .dropdown-option.open::after {
+            transform: rotate(180deg); 
+        }
+
+
+        .services-section {
+            padding: 50px;
+            background-color: #7e6644;
+            text-align: center;
+        }
+
+        .service-images-container {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .service-image {
+            width: 23%;
+            margin: 5px;
+        }
+
+        .services-section p {
+            font-size: 3.3rem;
+            margin-bottom: 60px;
+            color: #ffffff;
+        }
+
+        h2 {
+            font-size: 6.6rem;
+                margin-bottom: 10px;
+                font-weight: bold;
+                color: #7e6644;
+        }
+
+     
+
+/* Container Styles */
+.service-images-container {
+    background-color: white;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 95%;
+    max-width: 1170px;
+}
+
+#barbers-info-container {
+    text-align: center;
+}
+
+.services-section {
+            padding: 50px;
+            background-color: #7e6644;
+            text-align: center;
+        }
+
+        .service-images-container {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .service-image {
+            width: 23%;
+            margin: 5px;
+        }
+
+        .services-section p {
+            font-size: 3.3rem;
+            margin-bottom: 60px;
+            color: #ffffff;
+        }
+
+        h2 {
+            font-size: 6.6rem;
+                margin-bottom: 10px;
+                font-weight: bold;
+                color: #7e6644;
+        }
+
+        .green{
+            width: 95%;
+        }
+
+/* Container Styles */
+.service-images-container {
+    background-color: white;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 95%;
+    max-width: 1170px;
+}
+
+#barbers-info-container {
+    text-align: center;
+}
+
+
+
+body {
+            padding-top: 0px;
+            background-color: black;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+       .services-container h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .faq-section,
+        .contact-section {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 3 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-section h3,
+        .contact-section h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 10px;
+            background-color: white;
+            border: 1px solid white;
+            border-radius: 5px;
+        }
+
+        .faq-section h3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+.faq-section h3::after {
+    content: '▼'; 
+    font-size: 20px;
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+
+.faq-section h3.open::after {
+    transform: rotate(180deg); 
+}
+
+
+
+
+
+
+
+.faq-section p {
+            font-size: 16px;
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+            display: none;
+            margin-top: 10px;
+        }
+
+        .faq-section p.show {
+            display: block;
+        }
+
+        .contact-section ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .contact-section ul li {
+            margin-bottom: 10px;
+        }
+
+
+
+        .comment-section {
+            padding: 50px;
+            background-color: #003C32;
+            color: white;
+            text-align: center;
+        }
+
+        .rating {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .star {
+            font-size: 30px;
+            cursor: pointer;
+            color: #cccccc;
+        }
+
+        .star.selected {
+            color: gold;
+        }
+
+        #comment-input {
+            width: 60%;
+            height: 100px;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #comments-list {
+            margin-top: 20px;
+        }
+
+        .comment {
+            background-color: #444;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            text-align: left;
+        }
+
+
+
+        /* Footer */
+        footer {
+            background-color: #003C32;
+            color: white;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        footer p {
+            font-weight: bold;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="fixed-header">
+        <div>
+            <img src="image/logo.jpg" alt="BaRVer Barbershop Logo" class="logo">
+        </div>
+        <div>
+            <h1 class="Barbershop">BaRVer Barbershop</h1>
+        </div>
+
+        <div class="link">
+            <a href="HELP.HTML">HELP</a>
+        </div>
+        <div class="link">
+            <a href="LOCATION.HTML">LOCATION</a>
+        </div>
+        <div class="link">
+            <a href="CONTACT US.HTML">CONTACT US</a>
+        </div>
+        <div class="link">
+            <a href="booking info.html">BOOKING</a>
+        </div>
+
+    </header>
+
+    <section class="about-section">
+        <div class="service-item">
+            <video id="background-video" autoplay muted loop>
+                <source src="HOME.mov" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <div class="text-container">
+                <h2>Welcome to <br>BaRVer Barbershop</h2>
+                <p>Your trusted partner for stylish haircuts and grooming.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="dropdown-container">
+        <h3 class="dropdown-option" onclick="toggleContainer('about-container-container')">ABOUT US</h3>
+        <h3 class="dropdown-option" onclick="toggleContainer('haircuts-container')">HAIRCUTS</h3>
+        <h3 class="dropdown-option" onclick="toggleContainer('shaves-container')">SHAVES</h3>
+        <h3 class="dropdown-option" onclick="toggleContainer('beard-trimming-container')">HAIRCUT DESIGN</h3>
+        <h3 class="dropdown-option" onclick="toggleContainer('barbers-info-container')">BARBERS INFORMATION</h3>
+    </div>
+
+    <!-- ABOUT US -->
+    <div id="about-container-container" class="service-images-container">
+        <div class="image-row">
+            <img src="image/Green Flower Hello May Flyer.png"  class="green">
+        </div>
+    </div>
+
+    <!-- HAIRCUTS -->
+    <div id="haircuts-container" class="service-images-container">
+        <h2>Our Haircuts Services</h2>
+        <p>We offer a variety of stylish haircuts to fit your unique look. Check out our options below:</p><br><br>
+        <div class="image-row">
+            <img src="image/6.jpg" class="service-image">
+            <img src="image/7.jpg" class="service-image">
+            <img src="image/8.jpg" class="service-image">
+            <img src="image/9.jpg" class="service-image">
+        </div>
+    </div>
+
+    <!-- SHAVES -->
+    <div id="shaves-container" class="service-images-container">
+        <h2>Our Shave Services</h2>
+        <p>Our professional shave services will leave you feeling refreshed and smooth. Check out our options below:</p><br><br>
+        <div class="image-row">
+            <img src="image/11.jpg" class="service-image">
+            <img src="image/12.jpg" class="service-image">
+            <img src="image/13.jpg" class="service-image">
+            <img src="image/14.jpg" class="service-image">
+        </div>
+    </div>
+
+    <!-- HAIRCUT DESIGN -->
+    <div id="beard-trimming-container" class="service-images-container">
+        <h2>Our Haircut Design Services</h2>
+        <p>Let our skilled barbers design a custom haircut that fits your style. Check out the options below:</p><br><br>
+        <div class="image-row">
+            <img src="image/1.jpg" class="service-image">
+            <img src="image/2.jpg" class="service-image">
+            <img src="image/3.jpg" class="service-image">
+            <img src="image/4.jpg" class="service-image">
+        </div>
+    </div>
+
+    <!-- BARBERS INFORMATION -->
+    <div id="barbers-info-container" class="service-images-container">
+        <h2>Barbers Information</h2>
+        <div class="image-row">
+            <img src="image/15.jpg" class="service-image">
+            <h3>RENE T. VALERIO</h3>
+            <img src="image/16.jpg" class="service-image">
+            <h3>SAMUEL GUEVARRA</h3>
+            <img src="image/17.jpg" class="service-image">
+            <h3>JERICHO ARENAS BULATAO</h3>
+            <img src="image/18.jpg" class="service-image">
+            <h3>RYAN DORMIDO</h3>
+            <img src="image/19.jpg" class="service-image">
+            <h3>JERICHO VILLANDA</h3>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <section class="faq-section">
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            <div>
+                <h3 onclick="toggleFAQ(0)"> HOW CAN I MAKE A BOOKING?</h3>
+                <p id="faq1">To book an appointment, please visit our <a href="booking info.html">Booking page</a> and choose a suitable time and service.</p>
+            </div>
+            <div>
+                <h3 onclick="toggleFAQ(1)">WHAT SERVICE DO YOU OFFER?</h3>
+                <p id="faq2">We offer haircuts, beard trims, shaves, and hair styling. You can check out all the details on our <a href="HOME.HTML">Services page</a>.</p>
+            </div>
+            <div>
+                <h3 onclick="toggleFAQ(2)">WHAT ARE YOUR WORKING HOUR?</h3>
+                <p id="faq3">Our working hours are from 9:00 AM to 6:00 PM, Monday to Saturday. We are closed on Sundays.</p>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <h2>Contact Us</h2>
+            <p>If you have any further questions or need assistance, feel free to reach out to us:</p>
+            <ul>
+                <li><strong>Email:</strong>barverbarbershop@gmail.com</li>
+                <li><strong>Phone:</strong> 0906 454 9479</li>
+                <li><strong>Location:</strong>Bonifacio Street Bonifacio, San Carlos City 2420 Pangasinan Philippines</li>
+            </ul>
+        </section>
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025, BaRVer Barbershop</p>
+        <p>Our services are available to all members of the public regardless of race, gender, or sexual orientation.</p>
+        <p class="social-links"></p>
+    </footer>
+</body>
+    
+        <script>
+   
+    function toggleContainer(containerId) {
+ 
+        const containers = document.querySelectorAll('.service-images-container');
+
+    
+        containers.forEach(container => {
+            container.style.display = 'none'; 
+        });
+
+      
+        const selectedContainer = document.getElementById(containerId);
+        if (selectedContainer) {
+            selectedContainer.style.display = 'block'; 
+        }
+    }
+
+    function toggleFAQ(index) {
+    var faq = document.getElementById('faq' + (index + 1));
+    var question = faq.previousElementSibling; 
+    
+    if (faq.classList.contains('show')) {
+        faq.classList.remove('show');
+        question.classList.remove('open'); 
+    } else {
+        faq.classList.add('show');
+        question.classList.add('open'); 
+}
+
+    }
+
+
+</script>
+</body>
+
+</html>
